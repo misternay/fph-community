@@ -23,6 +23,7 @@
     "@ionic-native/camera": "^4.17.0",
     "@ionic-native/core": "~4.17.0",
     "@ionic-native/diagnostic": "^4.17.0",
+    "@ionic-native/firebase": "^4.17.0",
     "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/http": "^4.17.0",
     "@ionic-native/image-picker": "^4.17.0",
