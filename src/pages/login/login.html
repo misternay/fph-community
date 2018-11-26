@@ -1,15 +1,6 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>loginPage</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
-  <ion-card style="margin-top:50%">
-    <div style="text-align: center;font-size:24px;padding: 16px">MOCK</div>
+  <ion-card style="margin-top:20%">
+    <div style="text-align: center;font-size:24px;padding: 16px">LOGIN</div>
     <ion-item>
       <ion-input type="text" placeholder="UserName"></ion-input>
     </ion-item>
@@ -25,8 +16,5 @@
       </ion-col>
     </ion-row>
   </ion-card>
-
+  <button ion-button full tapable (click)="goToHome()">Login</button>
 </ion-content>
-<ion-footer>
-  <button ion-button full tapable (click)="goToHome()">GO</button>
-</ion-footer>

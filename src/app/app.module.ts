@@ -17,7 +17,13 @@ import { Firebase } from '@ionic-native/firebase'
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: "ios",
+      statusbarPadding: false, //แก้ iOS11
+      swipeBackEnabled: false,
+      backButtonText: "",
+      backButtonIcon: "arrow-back"
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

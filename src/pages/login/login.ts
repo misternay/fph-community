@@ -16,6 +16,6 @@ export class LoginPage {
   }
 
   goToHome() {
-    this.navCtrl.push('HomePage')
+    this.navCtrl.setRoot('HomePage')
   }
 }
