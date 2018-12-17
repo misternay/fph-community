@@ -3,6 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { SearchFaceResponse } from "../../pages/search/data-layer/search-face-response";
 
+export interface BodyRequest {
+    api_key: string;
+    api_secret: string;
+    faceset_token: string;
+    image_base64: string;
+}
+
 @Injectable()
 export class SearchFace {
 
@@ -14,7 +21,7 @@ export class SearchFace {
 
     call(image: string): Observable<SearchFaceResponse> {
         const url = 'https://api-us.faceplusplus.com/facepp/v3/search';
-        
+
         const header = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'
         })
@@ -29,13 +36,13 @@ export class SearchFace {
         )
     }
 
-    private getFormUrlEncoded(toConvert) {
-		const formBody = [];
-		for (const property in toConvert) {
-			const encodedKey = encodeURIComponent(property);
-			const encodedValue = encodeURIComponent(toConvert[property]);
-			formBody.push(encodedKey + '=' + encodedValue);
-		}
-		return formBody.join('&');
-	}
+    private getFormUrlEncoded(toConvert: BodyRequest): string {
+        const formBody = [];
+        for (const property in toConvert) {
+            const encodedKey = encodeURIComponent(property);
+            const encodedValue = encodeURIComponent(toConvert[property]);
+            formBody.push(encodedKey + '=' + encodedValue);
+        }
+        return formBody.join('&');
+    }
 }
