@@ -53,9 +53,11 @@ export class SearchPage {
         this.searchFace.call(image).subscribe(
             res => {
                 console.log(res.results[0].confidence, res.results[0].face_token);
+                alert('Found' + res.results[0].confidence + res.results[0].face_token)
             }, err => {
                 console.log(JSON.stringify(err))
                 console.log('Noooo error ~~~~')
+                alert('Not found')
             }
         );
     }
