@@ -4,6 +4,7 @@ import { SearchFace } from '../../app/api/search-face';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DialogUtilService } from '../../app/util/dialog.util';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs';
     providers: [
         SearchFace,
         HttpClient,
+        DialogUtilService
     ]
 })
 export class SearchPage {
@@ -20,7 +22,8 @@ export class SearchPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         private searchFace: SearchFace,
-        private camera: Camera
+        private camera: Camera,
+        private dialogUtil: DialogUtilService
     ) { }
 
     ionViewDidLoad() { }
@@ -50,15 +53,16 @@ export class SearchPage {
     }
 
     private search(image: string) {
+        this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
             res => {
-                console.log(res.results[0].confidence, res.results[0].face_token);
-                alert('Found' + res.results[0].confidence + res.results[0].face_token)
+                this.navCtrl.push('SearchDetailPage', { 
+                    data: res.results[0]
+                });
             }, err => {
-                console.log(JSON.stringify(err))
-                console.log('Noooo error ~~~~')
                 alert('Not found')
             }
         );
     }
+
 }

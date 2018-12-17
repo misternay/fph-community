@@ -12,6 +12,17 @@ import { ImagePicker } from '@ionic-native/image-picker'
 import { Geolocation } from '@ionic-native/geolocation'
 import { Firebase } from '@ionic-native/firebase'
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from "angularfire2";
+
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyDsWN5fjPvPdPycnuGLGHWEnvrxbhMpk1s",
+    authDomain: "backtohome-28375.firebaseapp.com",
+    databaseURL: "https://backtohome-28375.firebaseio.com",
+    storageBucket: "backtohome-28375.appspot.com",
+    messagingSenderId: "569221856929"
+};
+    
 @NgModule({
   declarations: [
     MyApp
@@ -25,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
       swipeBackEnabled: false,
       backButtonText: "",
       backButtonIcon: "arrow-back"
-    })
+    }),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
