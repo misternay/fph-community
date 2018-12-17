@@ -11,12 +11,14 @@ import { HTTP } from '@ionic-native/http'
 import { ImagePicker } from '@ionic-native/image-picker'
 import { Geolocation } from '@ionic-native/geolocation'
 import { Firebase } from '@ionic-native/firebase'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp, {
       mode: "ios",
       statusbarPadding: false, //แก้ iOS11
