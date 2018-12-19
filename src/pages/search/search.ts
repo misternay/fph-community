@@ -18,6 +18,9 @@ import { DialogUtilService } from '../../app/util/dialog.util';
 })
 export class SearchPage {
 
+    imagePath = 'assets/imgs/image-empty.png';
+    isCapture = false;
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -30,12 +33,13 @@ export class SearchPage {
 
     capture() {
         const options: CameraOptions = {
-            quality: 60,
+            quality: 70,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE
         }
 
+        console.log(JSON.stringify(options))
         this.getImage(options);
     }
 
@@ -44,25 +48,42 @@ export class SearchPage {
             this.camera.getPicture(options)
         ).subscribe(
             imageData => {
-                const base64Image = 'data:image/jpeg;base64,' + imageData;
-                this.search(base64Image);
+                this.updateGetImage(imageData);
             }, err => {
                 console.log('search error')
             }
         );
     }
 
+    private updateGetImage(imageData: string) {
+        const base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.imagePath = base64Image;
+        this.isCapture = true;
+    }
+
+    confirmSearch() {
+        this.search(this.imagePath);
+    }
+
     private search(image: string) {
         this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
             res => {
-                this.navCtrl.push('SearchDetailPage', { 
-                    data: res.results[0]
-                });
+                if (res.results && res.results[0]) {
+                    this.navCtrl.push('SearchDetailPage', {
+                        data: res.results[0]
+                    });
+                } else {
+                    this.caseNotFound();
+                }
             }, err => {
-                alert('Not found')
+                this.caseNotFound();
             }
         );
     }
 
+    private caseNotFound() {
+        alert('Not found')
+        this.dialogUtil.hideLoadingDialog();
+    }
 }

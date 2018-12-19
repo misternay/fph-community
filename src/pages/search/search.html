@@ -9,8 +9,18 @@
 
 <ion-content no-padding>
     <ion-row>
-        <ion-col col-7>
-            <button ion-button blue style="text-align:center" (tap)="capture()">Capture</button>
+        <ion-col col-6>
+            <button ion-button blue style="text-align:center" (tap)="capture()">
+                <ion-icon name="camera"></ion-icon>
+            </button>
         </ion-col>
+        <ion-col col-6 *ngIf="isCapture">
+            <button ion-button blue style="text-align:center" (tap)="confirmSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <img class="image-path" [src]="imagePath">
     </ion-row>
 </ion-content>
