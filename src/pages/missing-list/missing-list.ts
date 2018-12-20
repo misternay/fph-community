@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MockMissingList } from './missing-list-mock-data';
 
 /**
  * Generated class for the MissingListPage page.
@@ -15,11 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MissingListPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-    }
+    listItem = MockMissingList.data;
+
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams
+    ) { }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MissingListPage');
+    }
+
+    goTOSearchDetail(index: number) {
+        console.log(index)
     }
 
 }

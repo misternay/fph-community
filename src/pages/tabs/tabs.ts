@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TabsPage {
 
     feedNews = 'HomePage';
-    compare = 'SearchPage';
+    compare = 'MissingListPage';
 
     constructor(
         public navCtrl: NavController,
