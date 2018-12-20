@@ -1,26 +1,32 @@
-<ion-header padding>
-
+<ion-header no-border style="margin-top: 25px;">
     <ion-navbar>
-        <ion-title>search</ion-title>
+        <ion-buttons start>
+            <button ion-button (tap)="goToHomePage()">
+                <ion-icon name="home"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>ค้นหาคนหาย</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content no-padding>
+<ion-content padding>
     <ion-row>
-        <ion-col col-6>
+        <ion-col text-center>
             <button ion-button blue style="text-align:center" (tap)="capture()">
-                <ion-icon name="camera"></ion-icon>
-            </button>
-        </ion-col>
-        <ion-col col-6 *ngIf="isCapture">
-            <button ion-button blue style="text-align:center" (tap)="confirmSearch()">
-                <ion-icon name="search"></ion-icon>
+                <ion-icon name="camera"> capture</ion-icon>
             </button>
         </ion-col>
     </ion-row>
     <ion-row>
         <img class="image-path" [src]="imagePath">
+    </ion-row>
+    <ion-row>
+        <ion-col text-center *ngIf="isCapture">
+            <button ion-button blue style="text-align:center" (tap)="confirmSearch()">
+                <ion-icon name="search"> face++</ion-icon>
+            </button>
+        </ion-col>
     </ion-row>
 </ion-content>

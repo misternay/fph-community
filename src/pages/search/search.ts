@@ -31,6 +31,10 @@ export class SearchPage {
 
     ionViewDidLoad() { }
 
+    goToHomePage() {
+        this.navCtrl.setRoot('HomePage');
+    }
+
     capture() {
         const options: CameraOptions = {
             quality: 70,
@@ -69,6 +73,7 @@ export class SearchPage {
         this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
             res => {
+                console.log(JSON.stringify(res))
                 if (res.results && res.results[0]) {
                     this.navCtrl.push('SearchDetailPage', {
                         data: res.results[0]
@@ -77,6 +82,7 @@ export class SearchPage {
                     this.caseNotFound();
                 }
             }, err => {
+                console.log(JSON.stringify(err))
                 this.caseNotFound();
             }
         );
