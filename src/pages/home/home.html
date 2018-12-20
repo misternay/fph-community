@@ -1,34 +1,56 @@
 <ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-only menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>HomePage</ion-title>
 
-  <ion-navbar>
-    <ion-buttons start>
-      <button ion-button icon-only menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>HomePage</ion-title>
-
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logout()">
-        <ion-icon name="power"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="logout()">
+                <ion-icon name="power"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-segment [(ngModel)]="x" color="secondary" (ionChange)="selectSegment($event)">
-    <ion-segment-button value="camera">
-      <ion-icon name="camera"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="bookmark">
-      <ion-icon name="bookmark"></ion-icon>
-    </ion-segment-button>
-  </ion-segment>
 
-  <div *ngFor="let item of catList;let i = index" style="padding-top:16px">
-    <list-photo [catImage]="item" [catName]="catName[i]"></list-photo>
-  </div>
+    <ion-row no-padding>
+        <ion-card>
+            <img src="assets/imgs/banner-test.jpg">
+        </ion-card>
+    </ion-row>
+
+    <ion-row no-padding>
+        <ion-card>
+            <ion-row>
+                <ion-col col-2>
+                    <img class="img-size" src="assets/imgs/mobile.png">
+                </ion-col>
+                <ion-col col-10>
+                    Mobile : xxxxxxxxxxxx
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-2>
+                    <img class="img-size" src="assets/imgs/line.png">
+                </ion-col>
+                <ion-col col-10>
+                    Line : xxxxxxxxxxxx
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-2>
+                    <img class="img-size" src="assets/imgs/facebook.png">
+                </ion-col>
+                <ion-col col-10>
+                    Facebook : xxxxxxxxxxxx
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ion-row>
 
 </ion-content>

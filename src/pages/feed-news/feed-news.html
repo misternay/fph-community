@@ -1,6 +1,10 @@
-<ion-header>
-
+<ion-header style="margin-top: 25px;">
     <ion-navbar>
+        <ion-buttons start>
+            <button ion-button (tap)="goToHomePage()">
+                <ion-icon name="home"></ion-icon>
+            </button>
+        </ion-buttons>
         <ion-title>feed-news</ion-title>
     </ion-navbar>
 
@@ -8,5 +12,7 @@
 
 
 <ion-content padding>
-
+    <div *ngFor="let item of catList;let i = index" style="padding-top:16px">
+        <list-photo [catImage]="item" [catName]="catName[i]"></list-photo>
+    </div>
 </ion-content>
