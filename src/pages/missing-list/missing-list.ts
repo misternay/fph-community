@@ -13,14 +13,18 @@ import { MockMissingList } from './missing-list-mock-data';
 @Component({
     selector: 'page-missing-list',
     templateUrl: 'missing-list.html',
+    providers: [
+        MockMissingList
+    ]
 })
 export class MissingListPage {
 
-    listItem = MockMissingList.data;
+    listItem = this.getMockMissingList.getMockData();
 
     constructor(
         public navCtrl: NavController,
-        public navParams: NavParams
+        public navParams: NavParams,
+        private getMockMissingList: MockMissingList
     ) { }
 
     ionViewDidLoad() {

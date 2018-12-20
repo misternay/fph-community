@@ -5,16 +5,23 @@ export interface MissingList {
 }
 
 export class MockMissingList {
-    static data: MissingList[] = [
-        {
-            name: 'supeman',
-            image: 'person',
-            province: 'bangkok'
-        },
-        {
-            name: 'ironman',
-            image: 'person',
-            province: 'Chonburi'
-        }
-    ]
+
+    getMockData(): MissingList[] {
+        return this.setMockData();
+    }
+
+    private setMockData(): MissingList[] {
+        return [
+            {
+                name: 'supeman',
+                image: 'person',
+                province: 'bangkok'
+            },
+            {
+                name: 'ironman',
+                image: 'person',
+                province: 'Chonburi'
+            }
+        ]
+    }
 }

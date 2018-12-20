@@ -12,7 +12,5 @@
 
 
 <ion-content padding>
-    <div *ngFor="let item of catList;let i = index" style="padding-top:16px">
-        <list-photo [catImage]="item" [catName]="catName[i]"></list-photo>
-    </div>
+    <list-photo [catList]="catList"></list-photo>
 </ion-content>
