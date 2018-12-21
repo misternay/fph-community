@@ -20,7 +20,7 @@ export class HomePage {
 
     logout() {
         alert('Logout');
-        this.navCtrl.setRoot('LoginPage')
+        this.navCtrl.setRoot('LoginPage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 })
     }
 
     goToMissingList() {
@@ -28,10 +28,10 @@ export class HomePage {
     }
 
     goToFeedNewspage() {
-        this.navCtrl.push('FeedNewsPage');
+        this.navCtrl.push('FeedNewsPage', {}, { animate: true, direction: "forward", animation: "md-transition" });
     }
 
     goToSearchPage() {
-        this.navCtrl.push('SearchPage');
+        this.navCtrl.push('SearchPage', {}, { animate: true, direction: "forward", animation: "md-transition" });
     }
 }

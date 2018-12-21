@@ -32,7 +32,7 @@ export class SearchPage {
     ionViewDidLoad() { }
 
     goToHomePage() {
-        this.navCtrl.setRoot('HomePage');
+        this.navCtrl.setRoot('HomePage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 });
     }
 
     capture() {

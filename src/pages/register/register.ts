@@ -24,6 +24,6 @@ export class RegisterPage {
 
   confirmReg() {
     alert('COMPLEATE!!')
-    this.navCtrl.setRoot('LoginPage')
+    this.navCtrl.setRoot('LoginPage', {}, { animate: true, direction: 'forward', animation: 'md-transition', duration: 200 })
   }
 }

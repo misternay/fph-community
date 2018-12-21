@@ -32,7 +32,7 @@ export class FeedNewsPage {
     }
 
     goToHomePage() {
-        this.navCtrl.setRoot('HomePage');
+        this.navCtrl.setRoot('HomePage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 });
     }
 
 }
