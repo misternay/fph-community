@@ -7,8 +7,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-    }
+    private isPressBtn = true;
+
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams
+    ) { }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad HomePage');
@@ -20,7 +24,13 @@ export class HomePage {
 
     logout() {
         alert('Logout');
-        this.navCtrl.setRoot('LoginPage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 })
+
+        if (this.setIsPressBtn()) { return; }
+        this.navCtrl.setRoot('LoginPage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 }).then(
+            () => {
+                this.isPressBtn = true;
+            }
+        )
     }
 
     goToMissingList() {
@@ -28,10 +38,26 @@ export class HomePage {
     }
 
     goToFeedNewspage() {
-        this.navCtrl.push('FeedNewsPage', {}, { animate: true, direction: "forward", animation: "md-transition" });
+        if (this.isPressBtn) { return; }
+        this.navCtrl.push('FeedNewsPage', {}, { animate: true, direction: "forward", animation: "md-transition" }).then(
+            () => {
+                this.isPressBtn = true;
+            }
+        );
     }
 
     goToSearchPage() {
-        this.navCtrl.push('SearchPage', {}, { animate: true, direction: "forward", animation: "md-transition" });
+        if (this.setIsPressBtn()) { return; }
+        this.navCtrl.push('SearchPage', {}, { animate: true, direction: "forward", animation: "md-transition" }).then(
+            () => {
+                this.isPressBtn = true;
+            }
+        );
+    }
+
+    private setIsPressBtn(): boolean {
+        if (!this.isPressBtn) { return true; }
+        this.isPressBtn = false;
+        return false;
     }
 }
