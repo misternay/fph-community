@@ -38,7 +38,7 @@ export class HomePage {
     }
 
     goToFeedNewspage() {
-        if (this.isPressBtn) { return; }
+        if (this.setIsPressBtn()) { return; }
         this.navCtrl.push('FeedNewsPage', {}, { animate: true, direction: "forward", animation: "md-transition" }).then(
             () => {
                 this.isPressBtn = true;
