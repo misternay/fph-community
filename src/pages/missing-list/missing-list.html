@@ -1,14 +1,12 @@
-<ion-header>
-
+<ion-header no-border style="margin-top: 25px;">
     <ion-navbar>
         <ion-title>รายชื่อคนหาย</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
-<ion-content no-padding>
-    <ion-list>
+<ion-content padding>
+    <ion-list padding>
         <ion-row *ngFor="let items of listItem;let i = index;">
             <ion-item-sliding #item>
                 <ion-item>

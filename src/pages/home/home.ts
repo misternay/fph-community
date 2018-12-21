@@ -17,8 +17,13 @@ export class HomePage {
     selectSegment(event) {
         alert('I AM ' + event.value)
     }
+
     logout() {
         alert('Logout');
         this.navCtrl.setRoot('LoginPage')
+    }
+
+    goToMissingList() {
+        this.navCtrl.push('MissingListPage');
     }
 }
