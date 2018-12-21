@@ -26,4 +26,12 @@ export class HomePage {
     goToMissingList() {
         this.navCtrl.push('MissingListPage');
     }
+
+    goToFeedNewspage() {
+        this.navCtrl.push('FeedNewsPage');
+    }
+
+    goToSearchPage() {
+        this.navCtrl.push('SearchPage');
+    }
 }
