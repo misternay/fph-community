@@ -13,14 +13,29 @@ export class MockMissingList {
     private setMockData(): MissingList[] {
         return [
             {
-                name: 'supeman',
+                name: 'มนัสนันท์ เบญจกิจรุ่งเรือง',
                 image: 'person',
                 province: 'bangkok'
             },
             {
-                name: 'ironman',
+                name: 'กนิษฐกาญ ใจดี',
                 image: 'person',
                 province: 'Chonburi'
+            },
+            {
+                name: 'ทินกร จรุงกลิ่น',
+                image: 'person',
+                province: 'Chonburi'
+            },
+            {
+                name: 'วุฒิชัย จันทร์สุวัฒน์',
+                image: 'person',
+                province: 'Bangkok'
+            },
+            {
+                name: 'พันธราภรณ์ มีสวัสดิ์',
+                image: 'person',
+                province: 'Bangkok'
             }
         ]
     }
