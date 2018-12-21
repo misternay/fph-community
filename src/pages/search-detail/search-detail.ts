@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Results } from '../search/data-layer/search-face-response';
 import * as firebase from 'Firebase';
 import { DialogUtilService } from '../../app/util/dialog.util';
+import { MissingList } from '../missing-list/missing-list-mock-data';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,16 @@ export class SearchDetailPage {
     };
 
     name = '';
+    missingData: MissingList = {
+        name: '',
+        province: '',
+        image: ''
+    };
+
+    image1 = '';
+    image2 = '';
+
+    dataFromFirebase: any = {};
 
     constructor(
         public navCtrl: NavController,
@@ -33,30 +44,44 @@ export class SearchDetailPage {
     }
 
     ionViewDidLoad() {
-        
+        // if (this.missingData && this.missingData.image) {
+        //     // this.image1 = this.
+        //     this.image2 = this.missingData.image;
+        //     this.dialogUtilService.hideLoadingDialog();
+        // } else {
+            this.searchFirebase(this.data.face_token);
+            console.log(this.data.face_token)
+        // }
     }
 
     private getParams() {
+        this.missingData = this.navParams.get('missingData');
         this.data = this.navParams.get('data');
-        console.log(this.data.face_token)
-        this.searchFirebase(this.data.face_token);
+        this.image1 = this.navParams.get('image');
+        // console.log(this.data.face_token)
     }
 
     private searchFirebase(child: string) {
         const ref = firebase.database().ref(child + '/');
 
         ref.on('value', resp => {
-            let list = [];
-            resp.forEach((item) => {
-                list.push(item.val())
-            })
-            // console.log(list)
-            // console.log(JSON.stringify(list))
-            // this.name = JSON.parse(JSON.stringify(list))[0];
-            this.name = list[0]
+            // let list = [];
+            // resp.forEach((item) => {
+            //     list.push(item.val())
+            // })
+
+            this.dataFromFirebase = resp.val();
+
+            console.log('name : ',JSON.stringify(this.dataFromFirebase))
+            this.name = this.dataFromFirebase.name;
+            this.image2 = this.dataFromFirebase.image;
             this.dialogUtilService.hideLoadingDialog();
         });
 
+    }
+
+    private getImage2() {
+        // this.this.missingData.name
     }
 
 }

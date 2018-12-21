@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DialogUtilService } from '../../app/util/dialog.util';
+import { MissingList } from '../missing-list/missing-list-mock-data';
 
 @IonicPage()
 @Component({
@@ -21,18 +22,34 @@ export class SearchPage {
     imagePath = 'assets/imgs/image-empty.png';
     isCapture = false;
 
+    private missingData: MissingList = {
+        name: '',
+        province: '',
+        image: ''
+    };
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         private searchFace: SearchFace,
         private camera: Camera,
         private dialogUtil: DialogUtilService
-    ) { }
+    ) {
+        this.getParams();
+    }
 
     ionViewDidLoad() { }
 
     goToHomePage() {
         this.navCtrl.setRoot('HomePage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 });
+    }
+
+    private getParams() {
+        this.missingData = this.navParams.get('missingData');
+        if (this.missingData) {
+            this.imagePath = this.missingData.image;
+            this.isCapture = true;
+        }
     }
 
     capture() {
@@ -66,7 +83,11 @@ export class SearchPage {
     }
 
     confirmSearch() {
-        this.search(this.imagePath);
+        // if (this.missingData && this.missingData.name) {
+        //     this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
+        // } else {
+            this.search(this.imagePath);
+        // }
     }
 
     private search(image: string) {
@@ -76,7 +97,9 @@ export class SearchPage {
                 console.log(JSON.stringify(res))
                 if (res.results && res.results[0]) {
                     this.navCtrl.push('SearchDetailPage', {
-                        data: res.results[0]
+                        data: res.results[0],
+                        image: this.imagePath,
+                        missingData: this.missingData
                     });
                 } else {
                     this.caseNotFound();

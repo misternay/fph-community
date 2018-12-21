@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MockMissingList } from './missing-list-mock-data';
+import { MockMissingList, MissingList } from './missing-list-mock-data';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import * as firebase from 'Firebase';
@@ -25,8 +25,7 @@ export interface FirebaseResponse {
 export class MissingListPage {
 
     // listItem = this.getMockMissingList.getMockData();
-    listMissing: Array<string>;
-    listItem: Array<any>;
+    listItem: Array<MissingList>;
 
     constructor(
         public navCtrl: NavController,
@@ -42,6 +41,9 @@ export class MissingListPage {
 
     goTOSearchDetail(index: number) {
         console.log(index)
+        this.navCtrl.push('SearchPage', {
+            missingData: this.listItem[index]
+        });
     }
 
     private getFromFirebase() {
