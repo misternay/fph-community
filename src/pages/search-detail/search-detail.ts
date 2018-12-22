@@ -49,8 +49,8 @@ export class SearchDetailPage {
         //     this.image2 = this.missingData.image;
         //     this.dialogUtilService.hideLoadingDialog();
         // } else {
-            // this.searchFirebase(this.data.face_token);
-            // console.log(this.data.face_token)
+        // this.searchFirebase(this.data.face_token);
+        // console.log(this.data.face_token)
         // }
     }
 
@@ -72,7 +72,7 @@ export class SearchDetailPage {
 
             this.dataFromFirebase = resp.val();
 
-            console.log('name : ',JSON.stringify(this.dataFromFirebase))
+            console.log('name : ', JSON.stringify(this.dataFromFirebase))
             this.name = this.dataFromFirebase.name;
             this.image2 = this.dataFromFirebase.image;
             this.dialogUtilService.hideLoadingDialog();
@@ -83,5 +83,7 @@ export class SearchDetailPage {
     private getImage2() {
         // this.this.missingData.name
     }
-
+    private backToHome() {
+        this.navCtrl.setRoot('HomePage')
+    }
 }

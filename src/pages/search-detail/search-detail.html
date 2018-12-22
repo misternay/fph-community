@@ -1,7 +1,7 @@
 <ion-header no-border>
 
     <ion-navbar>
-        <ion-title>รายชื่อคนหาย</ion-title>
+        <ion-title>ตรวจสอบรูปภาพ</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -10,16 +10,41 @@
 <ion-content padding>
     <ion-row>
         <ion-col>
-            {{ name }}
+            <!-- {{ name }} -->
+            <p style="text-align:center">นายโอ๊คอ้า แอบเที่ยวหาเชอปราง</p>
         </ion-col>
     </ion-row>
+    <ion-card padding>
+        <ion-row>
+            <ion-col col-6>
+                <img [src]="image1">
+            </ion-col>
+            <ion-col col-6>
+                <img [src]="image2">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-8 offset-3>
+                ค่าความเข้ากัน 60.79%
+            </ion-col>
+        </ion-row>
+    </ion-card>
 
+    <ion-card style="height: 30%">
+        <ion-row>
+            <p padding>รายละเอียดเพิ่มเติม</p>
+        </ion-row>
+        <ion-textarea style="padding-left:16px;padding-right:8px" placeholder="กรุณากรอกรายละเอียดเพิ่มเติม" rows="5"></ion-textarea>
+    </ion-card>
     <ion-row>
         <ion-col col-6>
-            <img [src]="image1">
+            <button ion-button color="secondary" block>สถานที่</button>
         </ion-col>
         <ion-col col-6>
-            <img [src]="image2">
+            <button ion-button color="secondary" block>ติดต่อ</button>
         </ion-col>
+    </ion-row>
+    <ion-row>
+        <button ion-button block (click)="backToHome()">กลับหน้าหลัก</button>
     </ion-row>
 </ion-content>
