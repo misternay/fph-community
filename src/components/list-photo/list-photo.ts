@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 export interface ListPhotoModel {
     name: string;
     image: string;
+    detail: string;
 }
 @Component({
     selector: 'list-photo',

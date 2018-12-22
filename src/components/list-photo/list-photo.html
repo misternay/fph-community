@@ -1,18 +1,18 @@
 <ion-row no-padding *ngFor="let cat of catList;">
-    <ion-card style="height:200px">
+    <ion-card style="height:300px">
         <ion-row>
             <ion-col style="text-align:center">
                 <span>{{cat.name}}</span>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col style="text-align:center;height: 100px">
-                <img [src]=cat.image width="50px" height="100px">
+            <ion-col style="text-align:center;height: 225px">
+                <img [src]=cat.image width="50px" height="200px">
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col style="text-align:left;height: 50px;padding-top: 10px">
-                <span>detail ....</span>
+                <span>{{cat.detail}}</span>
             </ion-col>
         </ion-row>
     </ion-card>
