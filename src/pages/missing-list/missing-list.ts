@@ -24,13 +24,14 @@ export interface FirebaseResponse {
 })
 export class MissingListPage {
 
-    // listItem = this.getMockMissingList.getMockData();
-    listItem: Array<MissingList>;
+    datelist = ['today', 'yesterday', 'monthago']
+    listDateItem = this.getMockMissingList.getMockData();
+    // listItem: Array<MissingList>;
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        // private getMockMissingList: MockMissingList,
+        private getMockMissingList: MockMissingList,
         private dialogUtil: DialogUtilService,
     ) { }
 
@@ -39,13 +40,14 @@ export class MissingListPage {
     }
 
     ionViewDidEnter() {
-        this.getFromFirebase();
+        this.dialogUtil.hideLoadingDialog();
+        // this.getFromFirebase();
     }
 
-    goTOSearchDetail(index: number) {
-        console.log(index)
+    goTOSearchDetail(dayIndex: number, index: number) {
+        console.log(dayIndex, index)
         this.navCtrl.push('SearchPage', {
-            missingData: this.listItem[index]
+            missingData: this.listDateItem[index]
         });
     }
 
@@ -53,13 +55,13 @@ export class MissingListPage {
         const ref = firebase.database().ref('/');
 
         ref.on('value', resp => {
-            let list = [];
+            // let list = [];
 
-            resp.forEach(res => {
-                list.push(res.val())
-            })
+            // resp.forEach(res => {
+            //     list.push(res.val())
+            // })
 
-            this.listItem  = list;
+            this.listDateItem  = resp.val();
             this.dialogUtil.hideLoadingDialog();
         })
     }

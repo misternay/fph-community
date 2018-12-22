@@ -45,12 +45,12 @@ export class SearchDetailPage {
     }
 
     ionViewDidLoad() {
-        if (this.missingData && this.missingData.image) {
-            this.image2 = this.missingData.image;
-            this.dialogUtilService.hideLoadingDialog();
-        } else {
-            this.searchFirebase(this.data.face_token);
-        }
+        // if (this.missingData && this.missingData.image) {
+        //     this.image2 = this.missingData.image;
+        //     this.dialogUtilService.hideLoadingDialog();
+        // } else {
+        //     this.searchFirebase(this.data.face_token);
+        // }
     }
 
     private getParams() {
@@ -73,7 +73,7 @@ export class SearchDetailPage {
         });
 
     }
-    
+
     private backToHome() {
         this.navCtrl.setRoot('HomePage')
     }

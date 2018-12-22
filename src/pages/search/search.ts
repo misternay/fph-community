@@ -85,7 +85,8 @@ export class SearchPage {
     }
 
     confirmSearch() {
-        this.search(this.imagePath);
+        this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
+        // this.search(this.imagePath);
     }
 
     private search(image: string) {
