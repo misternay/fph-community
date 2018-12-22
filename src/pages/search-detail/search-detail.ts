@@ -30,8 +30,8 @@ export class SearchDetailPage {
         image: ''
     };
 
-    image1 = '';
-    image2 = '';
+    image1 = 'assets/imgs/image-empty.png';
+    image2 = 'assets/imgs/image-empty.png';
 
     dataFromFirebase: any = {};
 
@@ -40,7 +40,7 @@ export class SearchDetailPage {
         public navParams: NavParams,
         private dialogUtilService: DialogUtilService
     ) {
-        this.getParams();
+        // this.getParams();
     }
 
     ionViewDidLoad() {
@@ -49,8 +49,8 @@ export class SearchDetailPage {
         //     this.image2 = this.missingData.image;
         //     this.dialogUtilService.hideLoadingDialog();
         // } else {
-            this.searchFirebase(this.data.face_token);
-            console.log(this.data.face_token)
+            // this.searchFirebase(this.data.face_token);
+            // console.log(this.data.face_token)
         // }
     }
 

@@ -84,9 +84,9 @@ export class SearchPage {
 
     confirmSearch() {
         // if (this.missingData && this.missingData.name) {
-        //     this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
+            this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
         // } else {
-            this.search(this.imagePath);
+            // this.search(this.imagePath);
         // }
     }
 
