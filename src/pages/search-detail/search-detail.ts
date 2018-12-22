@@ -27,7 +27,8 @@ export class SearchDetailPage {
     missingData: MissingList = {
         name: '',
         province: '',
-        image: ''
+        image: '',
+        imageToken: ''
     };
 
     image1 = 'assets/imgs/image-empty.png';
@@ -40,35 +41,28 @@ export class SearchDetailPage {
         public navParams: NavParams,
         private dialogUtilService: DialogUtilService
     ) {
-        // this.getParams();
+        this.getParams();
     }
 
     ionViewDidLoad() {
-        // if (this.missingData && this.missingData.image) {
-        //     // this.image1 = this.
-        //     this.image2 = this.missingData.image;
-        //     this.dialogUtilService.hideLoadingDialog();
-        // } else {
-        // this.searchFirebase(this.data.face_token);
-        // console.log(this.data.face_token)
-        // }
+        if (this.missingData && this.missingData.image) {
+            this.image2 = this.missingData.image;
+            this.dialogUtilService.hideLoadingDialog();
+        } else {
+            this.searchFirebase(this.data.face_token);
+        }
     }
 
     private getParams() {
         this.missingData = this.navParams.get('missingData');
         this.data = this.navParams.get('data');
         this.image1 = this.navParams.get('image');
-        // console.log(this.data.face_token)
     }
 
     private searchFirebase(child: string) {
         const ref = firebase.database().ref(child + '/');
 
         ref.on('value', resp => {
-            // let list = [];
-            // resp.forEach((item) => {
-            //     list.push(item.val())
-            // })
 
             this.dataFromFirebase = resp.val();
 
@@ -79,10 +73,7 @@ export class SearchDetailPage {
         });
 
     }
-
-    private getImage2() {
-        // this.this.missingData.name
-    }
+    
     private backToHome() {
         this.navCtrl.setRoot('HomePage')
     }

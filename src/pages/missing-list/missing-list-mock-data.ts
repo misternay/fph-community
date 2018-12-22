@@ -2,6 +2,7 @@ export interface MissingList {
     name: string;
     image: string;
     province: string;
+    imageToken: string;
 }
 
 export class MockMissingList {
@@ -15,27 +16,32 @@ export class MockMissingList {
             {
                 name: 'มนัสนันท์ เบญจกิจรุ่งเรือง',
                 image: 'person',
-                province: 'bangkok'
+                province: 'bangkok',
+                imageToken: '',
             },
             {
                 name: 'กนิษฐกาญ ใจดี',
                 image: 'person',
-                province: 'Chonburi'
+                province: 'Chonburi',
+                imageToken: ''
             },
             {
                 name: 'ทินกร จรุงกลิ่น',
                 image: 'person',
-                province: 'Chonburi'
+                province: 'Chonburi',
+                imageToken: ''
             },
             {
                 name: 'วุฒิชัย จันทร์สุวัฒน์',
                 image: 'person',
-                province: 'Bangkok'
+                province: 'Bangkok',
+                imageToken: ''
             },
             {
                 name: 'พันธราภรณ์ มีสวัสดิ์',
                 image: 'person',
-                province: 'Bangkok'
+                province: 'Bangkok',
+                imageToken: ''
             }
         ]
     }

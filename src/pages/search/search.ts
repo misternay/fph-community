@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { MissingList } from '../missing-list/missing-list-mock-data';
+import { SearchFaceResponse } from './data-layer/search-face-response';
 
 @IonicPage()
 @Component({
@@ -25,7 +26,8 @@ export class SearchPage {
     private missingData: MissingList = {
         name: '',
         province: '',
-        image: ''
+        image: '',
+        imageToken: ''
     };
 
     constructor(
@@ -46,10 +48,10 @@ export class SearchPage {
 
     private getParams() {
         this.missingData = this.navParams.get('missingData');
-        if (this.missingData) {
-            this.imagePath = this.missingData.image;
-            this.isCapture = true;
-        }
+        // if (this.missingData) {
+        //     this.imagePath = this.missingData.image;
+        //     this.isCapture = true;
+        // }
     }
 
     capture() {
@@ -83,27 +85,14 @@ export class SearchPage {
     }
 
     confirmSearch() {
-        // if (this.missingData && this.missingData.name) {
-            this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
-        // } else {
-            // this.search(this.imagePath);
-        // }
+        this.search(this.imagePath);
     }
 
     private search(image: string) {
         this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
             res => {
-                console.log(JSON.stringify(res))
-                if (res.results && res.results[0]) {
-                    this.navCtrl.push('SearchDetailPage', {
-                        data: res.results[0],
-                        image: this.imagePath,
-                        missingData: this.missingData
-                    });
-                } else {
-                    this.caseNotFound();
-                }
+                (this.IsFoundFace(res)) ? this.caseFound(res) : this.caseNotFound();
             }, err => {
                 console.log(JSON.stringify(err))
                 this.caseNotFound();
@@ -111,8 +100,40 @@ export class SearchPage {
         );
     }
 
+    private caseFound(res: SearchFaceResponse) {
+        if (this.missingData && this.missingData.imageToken) {
+            if (this.missingData.imageToken === res.results[0].face_token) {
+                this.goToSearchDetail(res);
+            } else {
+                this.caseNotMatch();
+            }
+        } else {
+            this.goToSearchDetail(res);
+        }
+    }
+
     private caseNotFound() {
         alert('Not found')
         this.dialogUtil.hideLoadingDialog();
+    }
+
+    private caseNotMatch() {
+        alert('Not Match')
+        this.dialogUtil.hideLoadingDialog();
+    }
+
+    private goToSearchDetail(res: SearchFaceResponse) {
+        this.navCtrl.push('SearchDetailPage', {
+            data: res.results[0],
+            image: this.imagePath,
+            missingData: this.missingData
+        });
+    }
+
+    private IsFoundFace(res: SearchFaceResponse): boolean {
+        if (res.results && res.results[0]) {
+            return true
+        }
+        return false;
     }
 }

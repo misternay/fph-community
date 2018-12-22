@@ -36,6 +36,9 @@ export class MissingListPage {
 
     ionViewDidLoad() {
         this.dialogUtil.showLoadingDialog();
+    }
+
+    ionViewDidEnter() {
         this.getFromFirebase();
     }
 
