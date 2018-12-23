@@ -20,7 +20,7 @@ import { SearchFaceResponse } from './data-layer/search-face-response';
 })
 export class SearchPage {
 
-    imagePath = 'assets/imgs/image-empty.png';
+    imagePath = 'assets/imgs/image-empty.jpg';
     isCapture = false;
 
     private missingData: MissingList = {

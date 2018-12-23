@@ -31,8 +31,8 @@ export class SearchDetailPage {
         imageToken: ''
     };
 
-    image1 = 'assets/imgs/image-empty.png';
-    image2 = 'assets/imgs/image-empty.png';
+    image1 = 'assets/imgs/image-empty.jpg';
+    image2 = 'assets/imgs/image-empty.jpg';
 
     dataFromFirebase: any = {};
 
