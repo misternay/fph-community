@@ -8,7 +8,7 @@
 <ion-content padding>
     <ion-row>
             <ion-list style=" width: 100%;">
-                <ion-row *ngFor="let items of people">
+                <ion-row *ngFor="let items of people" (click)="goToDetail(items)">
                     <ion-item-sliding #item>
                         <ion-item>
                             <ion-avatar item-start>

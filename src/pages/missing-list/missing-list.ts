@@ -39,7 +39,6 @@ export class MissingListPage {
     }
 
     ionViewDidLoad() {
-        this.dialogUtil.showLoadingDialog();
     }
 
     ionViewDidEnter() {
@@ -68,6 +67,7 @@ export class MissingListPage {
         })
     }
     getListOfPeople() {
+        this.dialogUtil.showLoadingDialog();
         var otherDatabase = otherApp.database().ref("/peopleList");
         otherDatabase.on('value', resp => {
             resp.forEach(va => {
@@ -76,5 +76,8 @@ export class MissingListPage {
             })
             this.dialogUtil.hideLoadingDialog();
         });
+    }
+    goToDetail(data) {
+        this.navCtrl.push('MissingDetailPage', { peopleDetail: data })
     }
 }

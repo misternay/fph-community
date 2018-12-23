@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>รายละเอียดเพิ่มเติม</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div style="text-align: center">
+    <span>
+      <h1>{{data.name}}</h1>
+    </span>
+  </div>
+  <div style="text-align: center">
+    <img [src]="data.image" alt="" height="50%" width="50%">
+  </div>
+  <ion-row>
+    <p [innerHTML]="data.detail"></p>
+  </ion-row>
+</ion-content>
