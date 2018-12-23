@@ -5,6 +5,7 @@ import { Results } from '../search/data-layer/search-face-response';
 import * as firebase from 'Firebase';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { MissingList } from '../missing-list/missing-list-mock-data';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @IonicPage()
 @Component({
@@ -36,10 +37,15 @@ export class SearchDetailPage {
 
     dataFromFirebase: any = {};
 
+    // private location = '';
+    latitude: number;
+    longitude: number;
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        private dialogUtilService: DialogUtilService
+        private dialogUtilService: DialogUtilService,
+        private geolocation: Geolocation
     ) {
         this.getParams();
     }
@@ -76,5 +82,21 @@ export class SearchDetailPage {
 
     private backToHome() {
         this.navCtrl.setRoot('HomePage')
+    }
+
+    getLocation() {
+        this.dialogUtilService.showLoadingDialog();
+        this.geolocation.watchPosition().subscribe(res => {
+            this.latitude = res.coords.latitude;
+            this.longitude = res.coords.longitude;
+            this.dialogUtilService.hideLoadingDialog();
+        })
+    }
+
+    isLocation(): boolean {
+        if (this.latitude && this.longitude) {
+            return true
+        }
+        return false
     }
 }
