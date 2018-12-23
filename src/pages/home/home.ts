@@ -8,6 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HomePage {
 
     private isPressBtn = true;
+    private wordRandom = '';
 
     constructor(
         public navCtrl: NavController,
@@ -16,6 +17,10 @@ export class HomePage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad HomePage');
+    }
+
+    ionViewDidEnter() {
+        this.randomWord()
     }
 
     selectSegment(event) {
@@ -31,6 +36,16 @@ export class HomePage {
                 this.isPressBtn = true;
             }
         )
+    }
+
+    randomWording(): string {
+        return this.wordRandom;
+    }
+
+    private randomWord() {
+        const listWording = ['ร่วมด้วย ช่วยเหลือกัน', 'ทุกคนเป็นเพื่อนร่วมโลก', 'พรุ่งนี้จะดีกว่าเสมอ', 'ทำทุกวันให้มีคุณค่า']
+        const random = Math.floor(Math.random() * 4) + 1
+        this.wordRandom = listWording[random]
     }
 
     goToMissingList() {
