@@ -86,7 +86,7 @@ export class SearchDetailPage {
 
     getLocation() {
         this.dialogUtilService.showLoadingDialog();
-        this.geolocation.watchPosition().subscribe(res => {
+        this.geolocation.getCurrentPosition().then(res => {
             this.latitude = res.coords.latitude;
             this.longitude = res.coords.longitude;
             this.dialogUtilService.hideLoadingDialog();

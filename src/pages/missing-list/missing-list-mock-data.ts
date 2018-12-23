@@ -22,31 +22,31 @@ export class MockMissingList {
             today: [
                 {
                     name: 'มนัสนันท์ เบญจกิจรุ่งเรือง',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'bangkok',
                     imageToken: '',
                 },
                 {
                     name: 'กนิษฐกาญ ใจดี',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'ทินกร จรุงกลิ่น',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'วุฒิชัย จันทร์สุวัฒน์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 },
                 {
                     name: 'พันธราภรณ์ มีสวัสดิ์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 }
@@ -54,31 +54,31 @@ export class MockMissingList {
             yesterday: [
                 {
                     name: 'มนัสนันท์ เบญจกิจรุ่งเรือง',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'bangkok',
                     imageToken: '',
                 },
                 {
                     name: 'กนิษฐกาญ ใจดี',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'ทินกร จรุงกลิ่น',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'วุฒิชัย จันทร์สุวัฒน์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 },
                 {
                     name: 'พันธราภรณ์ มีสวัสดิ์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 }
@@ -86,31 +86,31 @@ export class MockMissingList {
             monthago: [
                 {
                     name: 'มนัสนันท์ เบญจกิจรุ่งเรือง',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'bangkok',
                     imageToken: '',
                 },
                 {
                     name: 'กนิษฐกาญ ใจดี',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'ทินกร จรุงกลิ่น',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Chonburi',
                     imageToken: ''
                 },
                 {
                     name: 'วุฒิชัย จันทร์สุวัฒน์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 },
                 {
                     name: 'พันธราภรณ์ มีสวัสดิ์',
-                    image: 'person',
+                    image: 'assets/imgs/image-empty.jpg',
                     province: 'Bangkok',
                     imageToken: ''
                 }]
