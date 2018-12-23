@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-row class="headder-profile">
+    <!-- <ion-row class="headder-profile">
         <div class="img-profile">
             <img src="assets/imgs/help.jpg">
         </div>
@@ -25,7 +25,7 @@
             <ion-label class="fontsizepx14 light text-krungthai-blue title-profile"></ion-label>
             <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label>
         </div>
-    </ion-row>
+    </ion-row> -->
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
             <ion-row padding>
@@ -33,6 +33,25 @@
             </ion-row>
         </ion-card>
     </ion-row>
+    <ion-card style="height: 300px">
+        <ion-slides pager>
+            <ion-slide>
+                <div>
+                    <img src="http://www.backtohome.org/news_bth//photo/p_25598.jpg">
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <img src="http://www.backtohome.org/news_bth//photo/p_25569.jpg">
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <img src="http://www.backtohome.org/news_bth//photo/p_25460.jpg">
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </ion-card>
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
             <ion-row style="padding-top: 16px;padding-left: 16px">
@@ -61,6 +80,7 @@
         </ion-card>
     </ion-row>
     <contract></contract>
+
 </ion-content>
 <ion-footer>
     <ion-row>
