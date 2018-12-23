@@ -3,4 +3,29 @@ page-home {
         height: 24px;
         width: 24px;
     }
+    .headder-profile {
+        margin: 16px;
+        .img-profile {
+            display: block;
+            float: left;
+            border-radius: 50%;
+            padding-top: 12px;
+            img {
+                width: 48px;
+                height: 48px;
+                display: block;
+            }
+        }
+        .text-profile {
+            width: calc(100% - 95px);
+            float: left;
+            margin-left: 16px;
+            .title-profile {
+                display: block;
+            }
+            .name-profile {
+                display: block;
+            }
+        }
+    }
 }

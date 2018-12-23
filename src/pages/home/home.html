@@ -1,8 +1,9 @@
 <ion-header no-border style="margin-top: 25px;">
     <ion-navbar>
         <ion-buttons start>
-            <button ion-button icon-only menuToggle>
-                <ion-icon name="menu"></ion-icon>
+            <button ion-button icon-only>
+                <ion-icon name="search"></ion-icon>
+                <span style="padding-left: 6px">ช่วยกันสอดส่องดูแล</span>
             </button>
         </ion-buttons>
 
@@ -16,6 +17,15 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-row class="headder-profile">
+        <div class="img-profile">
+            <img src="assets/imgs/line.png">
+        </div>
+        <div class="text-profile">
+            <ion-label class="fontsizepx14 light text-krungthai-blue title-profile"></ion-label>
+            <ion-label class="fontsizepx24 bold name-profile">นายโอ๊คอ้า แอบหาเชอปราง</ion-label>
+        </div>
+    </ion-row>
 
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
@@ -31,15 +41,18 @@
 
     <ion-row no-padding>
         <ion-card>
-            <ion-row>
+            <ion-row padding>
+                <span>ข้อมูลติดต่อมูลนิธิกระจกเงา</span>
+            </ion-row>
+            <ion-row style="padding-left: 16px">
                 <ion-col col-2>
                     <img class="img-size" src="assets/imgs/mobile.png">
                 </ion-col>
                 <ion-col col-10>
-                    Mobile : xxxxxxxxxxxx
+                    Mobile : 080-775-2673
                 </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row style="padding-left: 16px">
                 <ion-col col-2>
                     <img class="img-size" src="assets/imgs/line.png">
                 </ion-col>
@@ -47,12 +60,13 @@
                     Line : xxxxxxxxxxxx
                 </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row style="padding-left: 16px">
                 <ion-col col-2>
                     <img class="img-size" src="assets/imgs/facebook.png">
                 </ion-col>
                 <ion-col col-10>
-                    Facebook : xxxxxxxxxxxx
+                    Facebook : Thaimissing
+                    <!-- https://www.facebook.com/Thaimissing -->
                 </ion-col>
             </ion-row>
         </ion-card>
