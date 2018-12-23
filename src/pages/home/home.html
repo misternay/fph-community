@@ -1,4 +1,4 @@
-<ion-header no-border style="margin-top: 25px;">
+<ion-header no-border>
     <ion-navbar>
         <ion-buttons start>
             <button ion-button icon-only>
@@ -26,53 +26,41 @@
             <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label>
         </div>
     </ion-row>
-
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
-            รายชื่อคนสูญหาย
-            <img src="assets/imgs/banner-test.jpg">
+            <ion-row style="padding-top: 16px;padding-left: 16px">
+                <img src="assets/imgs/helphope.png" alt="">
+            </ion-row>
         </ion-card>
     </ion-row>
-
-    <ion-row no-padding>
+    <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
-            <img src="assets/imgs/helphope.png">
-        </ion-card>
-    </ion-row>
-
-    <ion-row no-padding>
-        <ion-card>
+            <ion-row style="padding-top: 16px;padding-left: 16px">
+                <span>ประกาศคนหาย</span>
+            </ion-row>
             <ion-row padding>
-                <span>ข้อมูลติดต่อมูลนิธิกระจกเงา</span>
-            </ion-row>
-            <ion-row style="padding-left: 16px">
-                <ion-col col-2>
-                    <img class="img-size" src="assets/imgs/mobile.png">
+                <ion-col col-3 style="border: 2px red">
+                    <ion-avatar item-left>
+                        <img src="http://www.backtohome.org/news_bth//photo/p_25598.jpg" width="50px" height="60px">
+                    </ion-avatar>
+                    <span>พรรณี แผ่นทอง</span>
                 </ion-col>
-                <ion-col col-10>
-                    Mobile : 080-775-2673
+                <ion-col col-3 offset-1>
+                    <ion-avatar item-left>
+                        <img src="http://www.backtohome.org/news_bth//photo/p_25569.jpg" width="50px" height="60px">
+                    </ion-avatar>
+                    <span>ธงชัย สกุลรักษ์</span>
                 </ion-col>
-            </ion-row>
-            <ion-row style="padding-left: 16px">
-                <ion-col col-2>
-                    <img class="img-size" src="assets/imgs/line.png">
-                </ion-col>
-                <ion-col col-10>
-                    Line : xxxxxxxxxxxx
-                </ion-col>
-            </ion-row>
-            <ion-row style="padding-left: 16px">
-                <ion-col col-2>
-                    <img class="img-size" src="assets/imgs/facebook.png">
-                </ion-col>
-                <ion-col col-10>
-                    Facebook : Thaimissing
-                    <!-- https://www.facebook.com/Thaimissing -->
+                <ion-col col-3 offset-1>
+                    <ion-avatar item-left>
+                        <img src="http://www.backtohome.org/news_bth//photo/p_25460.jpg" width="50px" height="60px">
+                    </ion-avatar>
+                    <span>ไพศาล กองเงิน</span>
                 </ion-col>
             </ion-row>
         </ion-card>
     </ion-row>
-
+    <contract></contract>
 </ion-content>
 <ion-footer>
     <ion-row>

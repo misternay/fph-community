@@ -29,4 +29,21 @@ page-home {
             }
         }
     }
+    .center{
+        position: absolute;
+        top: 40%;
+        font-size: 20px;
+        padding-left: 10%;
+    }
+    .center-vertical {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .center-horizontal {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
