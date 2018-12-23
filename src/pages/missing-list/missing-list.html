@@ -1,4 +1,4 @@
-<ion-header no-border style="margin-top: 25px;">
+<ion-header no-border>
     <ion-navbar>
         <ion-title>รายชื่อคนหาย</ion-title>
     </ion-navbar>
@@ -6,27 +6,23 @@
 
 
 <ion-content padding>
-    <ion-row *ngFor="let date of [listDateItem.today, listDateItem.yesterday, listDateItem.monthago];let i = index">
-        <ion-list style=" width: 100%;">
-            <ion-list-header>
-                {{ datelist[i] }}
-            </ion-list-header>
-            <ion-row *ngFor="let items of date;let j = index">
-                <ion-item-sliding #item>
-                    <ion-item>
-                        <ion-avatar item-start>
-                            <img src="{{ items.image }}">
-                        </ion-avatar>
-                        <h2>{{ items.name }}</h2>
-                        <h3>{{ items.province }}</h3>
-                    </ion-item>
-                    <ion-item-options side="right">
-                        <button ion-button (tap)="goTOSearchDetail(i, j)">
-                            <ion-icon name="camera"></ion-icon>
-                        </button>
-                    </ion-item-options>
-                </ion-item-sliding>
-            </ion-row>
-        </ion-list>
-    </ion-row>
+    <ion-row>
+            <ion-list style=" width: 100%;">
+                <ion-row *ngFor="let items of people">
+                    <ion-item-sliding #item>
+                        <ion-item>
+                            <ion-avatar item-start>
+                                <img src="{{ items.image }}">
+                            </ion-avatar>
+                            <h2>{{ items.name }}</h2>
+                        </ion-item>
+                        <ion-item-options side="right">
+                            <button ion-button (tap)="goTOSearchDetail(i, j)">
+                                <ion-icon name="camera"></ion-icon>
+                            </button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                </ion-row>
+            </ion-list>
+        </ion-row>
 </ion-content>

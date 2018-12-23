@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import * as firebase from 'Firebase';
 import { TranFormUtil } from '../../app/util/tranform.util';
+import { otherApp } from '../../app/app.component';
 
 export interface FirebaseResponse {
     name: string;
@@ -27,20 +28,21 @@ export class MissingListPage {
     datelist = ['today', 'yesterday', 'monthago']
     listDateItem = this.getMockMissingList.getMockData();
     // listItem: Array<MissingList>;
-
+    people = [];
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         private getMockMissingList: MockMissingList,
         private dialogUtil: DialogUtilService,
-    ) { }
+    ) {
+        this.getListOfPeople();
+    }
 
     ionViewDidLoad() {
         this.dialogUtil.showLoadingDialog();
     }
 
     ionViewDidEnter() {
-        this.dialogUtil.hideLoadingDialog();
         // this.getFromFirebase();
     }
 
@@ -61,8 +63,18 @@ export class MissingListPage {
             //     list.push(res.val())
             // })
 
-            this.listDateItem  = resp.val();
+            this.listDateItem = resp.val();
             this.dialogUtil.hideLoadingDialog();
         })
+    }
+    getListOfPeople() {
+        var otherDatabase = otherApp.database().ref("/peopleList");
+        otherDatabase.on('value', resp => {
+            resp.forEach(va => {
+                console.log(va.val())
+                this.people.push(va.val())
+            })
+            this.dialogUtil.hideLoadingDialog();
+        });
     }
 }

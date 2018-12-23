@@ -16,13 +16,21 @@ import { AngularFireModule } from "angularfire2";
 
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyDsWN5fjPvPdPycnuGLGHWEnvrxbhMpk1s",
-    authDomain: "backtohome-28375.firebaseapp.com",
-    databaseURL: "https://backtohome-28375.firebaseio.com",
-    storageBucket: "backtohome-28375.appspot.com",
-    messagingSenderId: "569221856929"
+  apiKey: "AIzaSyDsWN5fjPvPdPycnuGLGHWEnvrxbhMpk1s",
+  authDomain: "backtohome-28375.firebaseapp.com",
+  databaseURL: "https://backtohome-28375.firebaseio.com",
+  storageBucket: "backtohome-28375.appspot.com",
+  messagingSenderId: "569221856929"
 };
-    
+export const fhp = {
+  apiKey: "AIzaSyCk99Mv8Tsn5rnw9i2Uv2cfb0Bx2ma4Lro",
+  authDomain: "fph-community.firebaseapp.com",
+  databaseURL: "https://fph-community.firebaseio.com",
+  projectId: "fph-community",
+  storageBucket: "fph-community.appspot.com",
+  messagingSenderId: "443617903757"
+};
+
 @NgModule({
   declarations: [
     MyApp
