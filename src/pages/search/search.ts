@@ -50,10 +50,6 @@ export class SearchPage {
 
     private getParams() {
         this.missingData = this.navParams.get('missingData');
-        // if (this.missingData) {
-        //     this.imagePath = this.missingData.image;
-        //     this.isCapture = true;
-        // }
     }
 
     capture() {
@@ -116,12 +112,10 @@ export class SearchPage {
     }
 
     private caseNotFound() {
-        alert('Not found')
         this.dialogUtil.hideLoadingDialog();
     }
 
     private caseNotMatch() {
-        alert('Not Match')
         this.dialogUtil.hideLoadingDialog();
     }
 

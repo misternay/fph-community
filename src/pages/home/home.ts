@@ -75,4 +75,7 @@ export class HomePage {
         this.isPressBtn = false;
         return false;
     }
+    openCamera(){
+        
+    }
 }

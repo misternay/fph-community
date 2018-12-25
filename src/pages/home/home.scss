@@ -49,16 +49,74 @@ page-home {
             justify-content: center;
             align-items: center;
         }
-
         p {
             margin: 20px 0 0 0;
             padding: 0 20px;
         }
     }
-    
     .logo {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    ion-footer {
+        height: 61px;
+        background-color: #ffffff;
+        span {
+            font-weight: bold;
+        }
+        .footer-menu-bar {
+            border-top: 1px solid #f5f5f5;
+        }
+        .menu-bar {
+            height: 100%;
+        }
+        .scan-btn {
+            position: absolute;
+            left: calc(50% - 40px);
+            top: -20px;
+            width: 80px;
+            height: 80px;
+            background-image: linear-gradient(135deg, #00a6e6, #008ec4);
+            border: 4px solid #e5f7fc;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .scan-btn:active {
+            background-image: linear-gradient(135deg, #81cff4, #00a6e6);
+            border: 4px solid #f4faff;
+        }
+        .scan-img {
+            margin: 16px auto 0;
+            width: 40px;
+            height: 40px;
+        }
+        .scan-label {
+            display: block;
+        }
+        .full-width-height {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+        }
+        .full-height {
+            height: 100%;
+        }
+    }
+    ion-ion {
+        &[class*="custom-"] {
+            // Instead of using the font-based icons
+            // We're applying SVG masks
+            mask-size: contain;
+            mask-position: 50% 50%;
+            mask-repeat: no-repeat;
+            background: currentColor;
+            width: 1em;
+            height: 1em;
+            display: block;
+        }
+        [class*="custom-scan"] {
+            mask-image: url(http://www.stickpng.com/assets/images/584abf102912007028bd9332.png);
+        }
     }
 }

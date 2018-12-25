@@ -17,15 +17,15 @@
 </ion-header> -->
 
 <ion-content padding>
-    <ion-row class="headder-profile">
+    <!-- <ion-row class="headder-profile">
         <div class="img-profile">
             <img src="assets/imgs/help.jpg">
         </div>
         <div class="text-profile">
-            <ion-label class="fontsizepx14 light text-krungthai-blue title-profile"></ion-label>
-            <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label>
-        </div>
-    </ion-row>
+            <ion-label class="fontsizepx14 light text-krungthai-blue title-profile"></ion-label> -->
+            <!-- <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label> -->
+        <!-- </div>
+    </ion-row> -->
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-col class="logo">
             <img src="assets/imgs/helphope.png" alt="" height="100px">
@@ -84,7 +84,7 @@
 
 </ion-content>
 <ion-footer>
-    <ion-row>
+    <!-- <ion-row>
         <ion-col col-6>
             <button ion-button style="width: 100%" (tap)="goToFeedNewspage()">
                 ข่าวสาร
@@ -95,5 +95,28 @@
                 ค้นหา
             </button>
         </ion-col>
-    </ion-row>
+    </ion-row> -->
+    <ion-footer no-border>
+        <div text-center no-padding class="full-height footer-menu-bar">
+            <ion-row col no-padding class="full-height">
+                <ion-col col-5 no-padding class="full-height" tappable (tap)="goToFeedNewspage()">
+                    <button ion-button clear no-margin class="fontsizepx16 bold text-center full-width-height"
+                        no-border no-padding>
+                        ข่าวสาร
+                    </button>
+                </ion-col>
+                <ion-col col-2 tappable (tap)="openCamera()"></ion-col>
+                <ion-col col-5 no-padding class="full-height" tappable (tap)="goToSearchPage()">
+                    <button ion-button clear no-margin class="fontsizepx16 bold text-krungthai-blue text-center full-width-height"
+                        no-border no-padding>
+                        ค้นหา
+                    </button>
+                </ion-col>
+            </ion-row>
+            <div class="scan-btn text-center text-white" tappable (tap)="openCamera()">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqM_zUDFo6pxZHezR83DAKj_3aY0CYIvfwI7hdqgaPqvWLzn7g" class="scan-img">
+                <span class="fontsizepx12 scan-label"></span>
+            </div>
+        </div>
+    </ion-footer>
 </ion-footer>
