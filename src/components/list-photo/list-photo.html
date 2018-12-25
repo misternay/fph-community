@@ -1,19 +1,17 @@
-<ion-row no-padding *ngFor="let cat of catList;">
-    <ion-card style="height:300px">
-        <ion-row>
-            <ion-col style="text-align:center">
-                <span>{{cat.name}}</span>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col style="text-align:center;height: 225px">
-                <img [src]=cat.image width="50px" height="200px">
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col style="text-align:left;height: 50px;padding-top: 10px">
-                <span>{{cat.detail}}</span>
-            </ion-col>
-        </ion-row>
-    </ion-card>
-</ion-row>
+<!-- <div *ngIf="isNotMatchAnyInDatabase"> -->
+    <ion-row no-padding *ngFor="let cat of catList;">
+        <ion-card style="height:330px">
+            <ion-row>
+                <ion-col style="text-align:center;height: 225px">
+                    <img [src]=cat.image width="50px" height="200px">
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col style="text-align:left;height: 50px;padding-top: 10px">
+                    <span>{{cat.detail}}....</span>
+                </ion-col>
+            </ion-row>
+            <button ion-button block (click)="goToDetailPage(cat)">ข้อมูลเพิ่มเติม</button>
+        </ion-card>
+    </ion-row>
+<!-- </div> -->

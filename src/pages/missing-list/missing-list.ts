@@ -47,7 +47,7 @@ export class MissingListPage {
     }
 
     ionViewDidLoad() {
-        if (localStorage.getItem('peopleList')) {
+        if (sessionStorage.getItem('peopleList')) {
             this.people = JSON.parse(localStorage.getItem('peopleList'));
             this.people.forEach((value: { date: string, name: string, image: string, detail: string }) => {
                 if (value.date.includes(this.monthList[0])) {
@@ -81,7 +81,7 @@ export class MissingListPage {
             resp.forEach(va => {
                 console.log(va.val())
                 this.people.push(va.val())
-                localStorage.setItem('peopleList', JSON.stringify(this.people));
+                sessionStorage.setItem('peopleList', JSON.stringify(this.people));
             })
             this.dialogUtil.hideLoadingDialog();
         });

@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MockFeedNews } from './feed-news-mock-data';
-
-/**
- * Generated class for the FeedNewsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
     selector: 'page-feed-news',
@@ -34,5 +26,4 @@ export class FeedNewsPage {
     goToHomePage() {
         this.navCtrl.setRoot('HomePage', {}, { animate: true, direction: 'back', animation: 'md-transition', duration: 200 });
     }
-
 }
