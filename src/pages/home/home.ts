@@ -29,7 +29,6 @@ export class HomePage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad HomePage');
         // if (!sessionStorage.getItem('peopleList')) {
-        this.dialogUtil.showLoadingDialog();
         this.getPeople().then(() => {
             this.isLoadingFinnish = true;
             this.dialogUtil.hideLoadingDialog();

@@ -89,7 +89,8 @@ export class SearchDetailPage {
         arrayPost.push({
             image: this.userImage,
             missing: this.missingImage,
-            detail: this.textAreaValue
+            detail: this.textAreaValue,
+            name: this.missingData.name
         });
         localStorage.setItem('post', JSON.stringify(arrayPost));
         this.isShared = true;
