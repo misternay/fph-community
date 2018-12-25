@@ -45,7 +45,10 @@ export class SearchPage {
     }
 
     private getParams() {
-        this.missingData = this.navParams.get('missingData');
+        if (this.navParams.get('image')) {
+            this.imagePath = this.navParams.get('image')
+            this.search(this.imagePath)
+        }
     }
 
     capture() {

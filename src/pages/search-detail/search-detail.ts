@@ -90,7 +90,7 @@ export class SearchDetailPage {
             image: this.userImage,
             missing: this.missingImage,
             detail: this.textAreaValue,
-            name: this.missingData.name
+            name: this.missingData ? this.missingData.name : ""
         });
         localStorage.setItem('post', JSON.stringify(arrayPost));
         this.isShared = true;
