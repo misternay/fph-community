@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Observable } from 'rxjs';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { SearchFace } from '../../app/api/search-face';
+import { otherApp } from '../../app/app.component';
 @IonicPage()
 @Component({
     selector: 'page-home',
@@ -14,17 +15,32 @@ export class HomePage {
     private isPressBtn = true;
     private wordRandom = "";
     imagePath = "";
+    peopleList = [];
+    peopleLists = [];
 
+    isLoadingFinnish = false;
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         private camera: Camera,
-        public dialogUtil: DialogUtilService,
-        public searchApi: SearchFace
-    ) { }
+        public dialogUtil: DialogUtilService) {
+    }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad HomePage');
+        // if (!sessionStorage.getItem('peopleList')) {
+        this.dialogUtil.showLoadingDialog();
+        this.getPeople().then(() => {
+            this.isLoadingFinnish = true;
+            this.dialogUtil.hideLoadingDialog();
+            this.peopleLists.push(this.peopleList[0])
+            this.peopleLists.push(this.peopleList[1])
+            this.peopleLists.push(this.peopleList[2])
+            this.peopleLists.push(this.peopleList[3])
+            this.peopleLists.push(this.peopleList[4])
+            this.peopleLists.push(this.peopleList[5])
+            this.peopleLists.push(this.peopleList[6])
+        });
     }
 
     ionViewDidEnter() {
@@ -116,10 +132,22 @@ export class HomePage {
     private updateGetImage(imageData: string) {
         const base64Image = 'data:image/jpeg;base64,' + imageData;
         this.imagePath = base64Image;
-        
+
         setTimeout(() => {
             this.goToSearchPageForIdentify();
             this.dialogUtil.hideLoadingDialog();
         }, 200)
+    }
+    public getPeople(): Promise<any> {
+        return new Promise(resolve => {
+            var otherDatabase = otherApp.database().ref("/peopleList");
+            otherDatabase.on('value', resp => {
+                resp.forEach(va => {
+                    console.log(va.val())
+                    this.peopleList.push(va.val())
+                });
+                resolve();
+            });
+        });
     }
 }

@@ -134,11 +134,4 @@ export class SearchPage {
             });
         });
     }
-
-    private IsFoundFace(res: SearchFaceResponse): boolean {
-        if (res.results && res.results[0]) {
-            return true
-        }
-        return false;
-    }
 }

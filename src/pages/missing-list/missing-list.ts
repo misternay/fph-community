@@ -79,6 +79,9 @@ export class MissingListPage {
 
     getListOfPeople() {
         this.dialogUtil.showLoadingDialog();
+        setTimeout(()=>{
+            this.dialogUtil.hideLoadingDialog();
+        },1000)
         var otherDatabase = otherApp.database().ref("/peopleList");
         otherDatabase.on('value', resp => {
             resp.forEach(va => {
@@ -87,7 +90,6 @@ export class MissingListPage {
             })
             sessionStorage.setItem('peopleList', JSON.stringify(this.people));
             this.prepareDisplay();
-            this.dialogUtil.hideLoadingDialog();
         });
     }
     goToDetail(data) {

@@ -23,8 +23,8 @@
         </div>
         <div class="text-profile">
             <ion-label class="fontsizepx14 light text-krungthai-blue title-profile"></ion-label> -->
-            <!-- <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label> -->
-        <!-- </div>
+    <!-- <ion-label class="fontsizepx24 bold name-profile">{{ randomWording() }}</ion-label> -->
+    <!-- </div>
     </ion-row> -->
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-col class="logo">
@@ -58,24 +58,12 @@
             <ion-row style="padding-top: 16px;padding-left: 16px">
                 <span>ประกาศคนหาย</span>
             </ion-row>
-            <ion-row padding>
-                <ion-col col-3 style="border: 2px red">
+            <ion-row padding *ngIf="isLoadingFinnish">
+                <ion-col col-3 style="border: 2px red" *ngFor="let people of peopleLists">
                     <ion-avatar item-left>
-                        <img src="http://www.backtohome.org/news_bth//photo/p_25598.jpg" width="50%">
+                        <img [src]="people.image" width="50%">
                     </ion-avatar>
-                    <span>พรรณี แผ่นทอง</span>
-                </ion-col>
-                <ion-col col-3 offset-1>
-                    <ion-avatar item-left>
-                        <img src="http://www.backtohome.org/news_bth//photo/p_25569.jpg" width="50%">
-                    </ion-avatar>
-                    <span>ธงชัย สกุลรักษ์</span>
-                </ion-col>
-                <ion-col col-3 offset-1>
-                    <ion-avatar item-left>
-                        <img src="http://www.backtohome.org/news_bth//photo/p_25460.jpg" width="50%">
-                    </ion-avatar>
-                    <span>ไพศาล กองเงิน</span>
+                    <span>{{people.name}}</span>
                 </ion-col>
             </ion-row>
         </ion-card>
@@ -114,7 +102,8 @@
                 </ion-col>
             </ion-row>
             <div class="scan-btn text-center text-white" tappable (tap)="openCamera()">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqM_zUDFo6pxZHezR83DAKj_3aY0CYIvfwI7hdqgaPqvWLzn7g" class="scan-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqM_zUDFo6pxZHezR83DAKj_3aY0CYIvfwI7hdqgaPqvWLzn7g"
+                    class="scan-img">
                 <span class="fontsizepx12 scan-label"></span>
             </div>
         </div>
