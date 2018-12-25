@@ -46,7 +46,7 @@
     </ion-card>
     <ion-row>
         <ion-col col-6>
-            <button ion-button color="secondary" block>แชร์สาธารณะ</button>
+            <button ion-button color="secondary" (tap)="sharePost()" [disabled]="isShared" block>แชร์สาธารณะ</button>
         </ion-col>
         <ion-col col-6>
             <button ion-button color="secondary" (tap)="getLocation()" block>สถานที่</button>

@@ -24,6 +24,7 @@ export class SearchDetailPage {
         face_token: '',
     };
     isFound = false;
+    isShared = false;
     name = '';
     missingData: any = {
         image: "",
@@ -79,11 +80,20 @@ export class SearchDetailPage {
         this.geolocation.getCurrentPosition().then(res => {
             this.latitude = res.coords.latitude;
             this.longitude = res.coords.longitude;
-        }).catch(()=>{
+        }).catch(() => {
             this.dialogUtilService.hideLoadingDialog();
         });
     }
-
+    sharePost() {
+        let arrayPost: Array<any> = JSON.parse(localStorage.getItem('post')) ? JSON.parse(localStorage.getItem('post')) : [];
+        arrayPost.push({
+            image: this.userImage,
+            missing: this.missingImage,
+            detail: this.textAreaValue
+        });
+        localStorage.setItem('post', JSON.stringify(arrayPost));
+        this.isShared = true;
+    }
     isLocation(): boolean {
         if (this.latitude && this.longitude) {
             return true
