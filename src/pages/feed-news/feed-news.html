@@ -12,5 +12,10 @@
 
 
 <ion-content padding>
-    <list-photo [catList]="catList"></list-photo>
+    <list-photo [catList]="feedList"></list-photo>
+    <ion-row>
+        <ion-col col-8 offset-3>
+            <span *ngIf="!feedList" style="padding-top: 50%">ยังไม่มีข่าวสารเร็วๆนี้</span>
+        </ion-col>
+    </ion-row>
 </ion-content>

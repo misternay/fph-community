@@ -12,7 +12,7 @@ import { MockFeedNews } from './feed-news-mock-data';
 export class FeedNewsPage {
 
     catList = this.getMockCatList.getMockData();
-
+    feedList = JSON.parse(localStorage.getItem("post"));
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,

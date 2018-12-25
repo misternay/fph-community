@@ -31,8 +31,8 @@ export class SearchDetailPage {
         name: ""
     };
 
-    userImage = 'assets/imgs/image-empty.jpg';
-    missingImage = 'assets/imgs/image-empty.jpg';
+    userImage = '';
+    missingImage = '';
     confidence = "0.00";
     dataFromFirebase: any = {};
     textAreaValue: string = "";
