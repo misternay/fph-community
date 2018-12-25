@@ -8,24 +8,31 @@
 
 
 <ion-content padding>
-    <ion-row>
+    <ion-row *ngIf="isFound">
         <ion-col>
             <!-- {{ name }} -->
-            <p style="text-align:center">นายซุปเปอร์แมน รีเทิร์น</p>
+            <p style="text-align:center">{{name}}</p>
         </ion-col>
     </ion-row>
-    <ion-card padding>
+    <ion-card padding *ngIf="isFound">
         <ion-row>
             <ion-col col-6>
-                <img [src]="image1">
+                <img [src]="userImage">
             </ion-col>
             <ion-col col-6>
-                <img [src]="image2">
+                <img [src]="missingImage">
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-8 offset-3>
-                ค่าความเข้ากัน 60.79%
+                ค่าความเข้ากัน {{confidence}} %
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card padding *ngIf="!isFound">
+        <ion-row>
+            <ion-col col-8 offset-2>
+                <img [src]="userImage">
             </ion-col>
         </ion-row>
     </ion-card>
@@ -34,26 +41,15 @@
         <ion-row>
             <p padding>รายละเอียดเพิ่มเติม</p>
         </ion-row>
-        <ion-textarea style="padding-left:16px;padding-right:8px" placeholder="กรุณากรอกรายละเอียดเพิ่มเติม" rows="5"></ion-textarea>
+        <ion-textarea style="padding-left:16px;padding-right:8px" [(ngModel)]="textAreaValue" placeholder="กรุณากรอกรายละเอียดเพิ่มเติม"
+            rows="5"></ion-textarea>
     </ion-card>
-    <ion-row *ngIf="isLocation()">
-        <ion-row>
-            <ion-col>
-                latitude {{ latitude }}
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                longitude {{ longitude }}
-            </ion-col>
-        </ion-row>
-    </ion-row>
     <ion-row>
         <ion-col col-6>
-            <button ion-button color="secondary" (tap)="getLocation()" block>สถานที่</button>
+            <button ion-button color="secondary" block>แชร์สาธารณะ</button>
         </ion-col>
         <ion-col col-6>
-            <button ion-button color="secondary" block>ติดต่อ</button>
+            <button ion-button color="secondary" (tap)="getLocation()" block>สถานที่</button>
         </ion-col>
     </ion-row>
     <ion-row>

@@ -79,9 +79,10 @@ export class MissingListPage {
 
     getListOfPeople() {
         this.dialogUtil.showLoadingDialog();
-        setTimeout(()=>{
+        setTimeout(() => {
             this.dialogUtil.hideLoadingDialog();
-        },1000)
+        }, 1000)
+
         var otherDatabase = otherApp.database().ref("/peopleList");
         otherDatabase.on('value', resp => {
             resp.forEach(va => {

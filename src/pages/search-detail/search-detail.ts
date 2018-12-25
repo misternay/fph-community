@@ -23,19 +23,18 @@ export class SearchDetailPage {
         user_id: '',
         face_token: '',
     };
-
+    isFound = false;
     name = '';
-    missingData: MissingList = {
-        name: '',
-        province: '',
-        image: '',
-        imageToken: ''
+    missingData: any = {
+        image: "",
+        name: ""
     };
 
-    image1 = 'assets/imgs/image-empty.jpg';
-    image2 = 'assets/imgs/image-empty.jpg';
-
+    userImage = 'assets/imgs/image-empty.jpg';
+    missingImage = 'assets/imgs/image-empty.jpg';
+    confidence = "0.00";
     dataFromFirebase: any = {};
+    textAreaValue: string = "";
 
     // private location = '';
     latitude: number;
@@ -51,35 +50,26 @@ export class SearchDetailPage {
     }
 
     ionViewDidLoad() {
-        // if (this.missingData && this.missingData.image) {
-        //     this.image2 = this.missingData.image;
-        //     this.dialogUtilService.hideLoadingDialog();
-        // } else {
-        //     this.searchFirebase(this.data.face_token);
-        // }
     }
 
     private getParams() {
-        this.missingData = this.navParams.get('missingData');
+        this.missingData = this.navParams.get('missingDetail');
         this.data = this.navParams.get('data');
-        this.image1 = this.navParams.get('image');
+        this.userImage = this.navParams.get('image');
+        this.confidence = this.navParams.get('confidence');
+        this.setUpUi();
     }
 
-    private searchFirebase(child: string) {
-        const ref = firebase.database().ref(child + '/');
+    public setUpUi() {
+        if (this.missingData) {
+            console.log("found ", this.missingData)
+            this.missingImage = this.missingData.image;
+            this.isFound = true;
+            this.name = this.missingData.name;
+        } else {
 
-        ref.on('value', resp => {
-
-            this.dataFromFirebase = resp.val();
-
-            console.log('name : ', JSON.stringify(this.dataFromFirebase))
-            this.name = this.dataFromFirebase.name;
-            this.image2 = this.dataFromFirebase.image;
-            this.dialogUtilService.hideLoadingDialog();
-        });
-
+        }
     }
-
     private backToHome() {
         this.navCtrl.setRoot('HomePage')
     }
@@ -89,8 +79,9 @@ export class SearchDetailPage {
         this.geolocation.getCurrentPosition().then(res => {
             this.latitude = res.coords.latitude;
             this.longitude = res.coords.longitude;
+        }).catch(()=>{
             this.dialogUtilService.hideLoadingDialog();
-        })
+        });
     }
 
     isLocation(): boolean {

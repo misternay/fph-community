@@ -79,10 +79,6 @@ export class SearchPage {
         this.search(this.imagePath);
     }
 
-    confirmSearch() {
-        this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
-    }
-
     private search(image: string) {
         this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
