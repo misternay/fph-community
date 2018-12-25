@@ -48,18 +48,8 @@ export class MissingListPage {
 
     ionViewDidLoad() {
         if (sessionStorage.getItem('peopleList')) {
-            this.people = JSON.parse(localStorage.getItem('peopleList'));
-            this.people.forEach((value: { date: string, name: string, image: string, detail: string }) => {
-                if (value.date.includes(this.monthList[0])) {
-                    this.listPeople.december.push(value)
-                } else if (value.date.includes(this.monthList[1])) {
-                    this.listPeople.november.push(value)
-                } else if (value.date.includes(this.monthList[2])) {
-                    this.listPeople.october.push(value)
-                } else {
-                    this.listPeople.other.push(value)
-                }
-            })
+            this.people = JSON.parse(sessionStorage.getItem('peopleList'));
+            this.prepareDisplay();
         } else {
             this.getListOfPeople();
         }
@@ -67,7 +57,20 @@ export class MissingListPage {
 
     ionViewDidEnter() {
     }
-
+    prepareDisplay() {
+        this.people.forEach((value: { date: string, name: string, image: string, detail: string, faceToken: string }) => {
+            console.log(value.date)
+            if (value.date.includes(this.monthList[0])) {
+                this.listPeople.december.push(value)
+            } else if (value.date.includes(this.monthList[1])) {
+                this.listPeople.november.push(value)
+            } else if (value.date.includes(this.monthList[2])) {
+                this.listPeople.october.push(value)
+            } else {
+                this.listPeople.other.push(value)
+            }
+        })
+    }
     goTOSearchDetail(dayIndex: number, index: number) {
         this.navCtrl.push('SearchPage', {
             missingData: this.listDateItem[index]
@@ -81,8 +84,9 @@ export class MissingListPage {
             resp.forEach(va => {
                 console.log(va.val())
                 this.people.push(va.val())
-                sessionStorage.setItem('peopleList', JSON.stringify(this.people));
             })
+            sessionStorage.setItem('peopleList', JSON.stringify(this.people));
+            this.prepareDisplay();
             this.dialogUtil.hideLoadingDialog();
         });
     }
