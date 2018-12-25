@@ -2,27 +2,23 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchFace } from '../../app/api/search-face';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { MissingList } from '../missing-list/missing-list-mock-data';
 import { SearchFaceResponse } from './data-layer/search-face-response';
+import { otherApp } from '../../app/app.component';
 
 @IonicPage()
 @Component({
     selector: 'page-search',
     templateUrl: 'search.html',
-    providers: [
-        SearchFace,
-        HttpClient,
-        DialogUtilService
-    ]
 })
 export class SearchPage {
 
     imagePath = 'assets/imgs/image-empty.jpg';
     isCapture = false;
-    peopleList = sessionStorage.getItem('peopleList')
+    peopleList: Array<any> = [];
+
     private missingData: MissingList = {
         name: '',
         province: '',
@@ -57,7 +53,8 @@ export class SearchPage {
             quality: 70,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true
         }
 
         console.log(JSON.stringify(options))
@@ -71,7 +68,7 @@ export class SearchPage {
             imageData => {
                 this.updateGetImage(imageData);
             }, err => {
-                console.log('search error')
+                console.log('search error', JSON.stringify(err))
             }
         );
     }
@@ -79,51 +76,62 @@ export class SearchPage {
     private updateGetImage(imageData: string) {
         const base64Image = 'data:image/jpeg;base64,' + imageData;
         this.imagePath = base64Image;
-        this.isCapture = true;
+        this.search(this.imagePath);
     }
 
     confirmSearch() {
         this.navCtrl.push('SearchDetailPage', { missingData: this.missingData });
-        // this.search(this.imagePath);
     }
 
     private search(image: string) {
         this.dialogUtil.showLoadingDialog();
         this.searchFace.call(image).subscribe(
             res => {
-                (this.IsFoundFace(res)) ? this.caseFound(res) : this.caseNotFound();
+                console.log(JSON.stringify(res));
+                this.processIdentify(res);
             }, err => {
                 console.log(JSON.stringify(err))
-                this.caseNotFound();
+                this.navCtrl.push('SearchDetailPage', {
+                    image: this.imagePath
+                });
             }
         );
     }
-
-    private caseFound(res: SearchFaceResponse) {
-        if (this.missingData && this.missingData.imageToken) {
-            if (this.missingData.imageToken === res.results[0].face_token) {
-                this.goToSearchDetail(res);
-            } else {
-                this.caseNotMatch();
-            }
+    private processIdentify(response: any) {
+        let dataDetail = {};
+        if (response.results) {
+            this.getPeople().then(() => {
+                dataDetail = this.peopleList.find(value => {
+                    return value.faceToken == response.results[0].face_token;
+                });
+                this.dialogUtil.hideLoadingDialog();
+                this.navCtrl.push('SearchDetailPage', {
+                    missingDetail: dataDetail,
+                    image: this.imagePath,
+                    confidence: response.results[0].confidence
+                }).then(() => {
+                    this.imagePath = "";
+                });
+            });
         } else {
-            this.goToSearchDetail(res);
+            this.dialogUtil.hideLoadingDialog();
+            this.navCtrl.push('SearchDetailPage', {
+                image: this.imagePath
+            });
         }
     }
 
-    private caseNotFound() {
-        this.dialogUtil.hideLoadingDialog();
-    }
-
-    private caseNotMatch() {
-        this.dialogUtil.hideLoadingDialog();
-    }
-
-    private goToSearchDetail(res: SearchFaceResponse) {
-        this.navCtrl.push('SearchDetailPage', {
-            data: res.results[0],
-            image: this.imagePath,
-            missingData: this.missingData
+    public getPeople(): Promise<any> {
+        return new Promise(resolve => {
+            var otherDatabase = otherApp.database().ref("/peopleList");
+            otherDatabase.on('value', resp => {
+                resp.forEach(va => {
+                    console.log(va.val())
+                    this.peopleList.push(va.val())
+                });
+                sessionStorage.setItem('peopleList', JSON.stringify(this.peopleList));
+                resolve();
+            });
         });
     }
 

@@ -14,6 +14,7 @@ import { Firebase } from '@ionic-native/firebase'
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from "angularfire2";
 import { DialogUtilService } from './util/dialog.util';
+import { SearchFace } from './api/search-face';
 
 
 export const firebaseConfig = {
@@ -63,7 +64,8 @@ export const fhp = {
     Geolocation,
     Firebase,
     DialogUtilService,
-    LoadingController
+    LoadingController,
+    SearchFace
   ]
 })
 export class AppModule { }

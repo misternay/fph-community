@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Observable } from 'rxjs';
 import { DialogUtilService } from '../../app/util/dialog.util';
+import { SearchFace } from '../../app/api/search-face';
 @IonicPage()
 @Component({
     selector: 'page-home',
@@ -13,12 +14,13 @@ export class HomePage {
     private isPressBtn = true;
     private wordRandom = "";
     imagePath = "";
-    
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         private camera: Camera,
-        public dialogUtil: DialogUtilService
+        public dialogUtil: DialogUtilService,
+        public searchApi: SearchFace
     ) { }
 
     ionViewDidLoad() {
@@ -107,10 +109,16 @@ export class HomePage {
         );
     }
 
+    goToSearchPageForIdentify() {
+        this.navCtrl.push('SearchPage', { image: this.imagePath });
+    }
+
     private updateGetImage(imageData: string) {
         const base64Image = 'data:image/jpeg;base64,' + imageData;
         this.imagePath = base64Image;
+        
         setTimeout(() => {
+            this.goToSearchPageForIdentify();
             this.dialogUtil.hideLoadingDialog();
         }, 200)
     }
