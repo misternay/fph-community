@@ -44,7 +44,7 @@ export class HomePage {
 
     private randomWord() {
         const listWording = ['ร่วมด้วย ช่วยเหลือกัน', 'ทุกคนเป็นเพื่อนร่วมโลก', 'พรุ่งนี้จะดีกว่าเสมอ', 'ทำทุกวันให้มีคุณค่า']
-        const random = Math.floor(Math.random() * 4) + 1
+        const random = Math.floor(Math.random() * 3) + 0;
         this.wordRandom = listWording[random]
     }
 

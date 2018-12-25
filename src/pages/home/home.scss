@@ -26,6 +26,7 @@ page-home {
             }
             .name-profile {
                 display: block;
+                margin: 30px 0 0 0;
             }
         }
     }
@@ -42,10 +43,22 @@ page-home {
         max-height: 100%;
     }
     .slide-zoom {
-        text-align: center;
-        display: block;
-        position: relative;
-        left: 20%;
         width: 100%;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p {
+            margin: 20px 0 0 0;
+            padding: 0 20px;
+        }
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
