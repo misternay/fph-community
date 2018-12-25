@@ -5,13 +5,28 @@
                 <ion-icon name="home"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title>ค้นหาคนหาย</ion-title>
+        <ion-title>ตรวจสอบภาพบุคคล</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-row style="padding-top: 20%;height: 50%;">
+        <ion-col col-8 offset-2 text-center>
+            <img class="image-path" src="http://www.7thsensegroup.com/images/finding-missing-person.png" width="200px"
+                height="200px">
+        </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+        <ion-col text-center *ngIf="isCapture">
+        <ion-col text-center>
+            <button ion-button blue style="text-align:center" (tap)="confirmSearch()">
+                <ion-icon name="search"> ค้นหา</ion-icon>
+            </button>
+        </ion-col>
+    </ion-row> -->
     <ion-row>
         <ion-col text-center padding>
             <button ion-button blue style="text-align:center" (tap)="capture()">
@@ -20,16 +35,6 @@
         </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col col-6 offset-3 text-center>
-            <img class="image-path" [src]="imagePath">
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <!-- <ion-col text-center *ngIf="isCapture"> -->
-        <ion-col text-center>
-            <button ion-button blue style="text-align:center" (tap)="confirmSearch()">
-                <ion-icon name="search"> ค้นหา</ion-icon>
-            </button>
-        </ion-col>
+        <p style="color:gray">*** ถ่ายรูปบุคคลหน้าสงสัยหรือเข้าข่ายเป็นบุคคลที่สูญหาย เพื่อค้นหาในระบบ</p>
     </ion-row>
 </ion-content>
