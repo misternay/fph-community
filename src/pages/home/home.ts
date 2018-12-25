@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Observable } from 'rxjs';
+import { DialogUtilService } from '../../app/util/dialog.util';
 @IonicPage()
 @Component({
     selector: 'page-home',
@@ -8,11 +11,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HomePage {
 
     private isPressBtn = true;
-    private wordRandom = '';
-
+    private wordRandom = "";
+    imagePath = "";
+    
     constructor(
         public navCtrl: NavController,
-        public navParams: NavParams
+        public navParams: NavParams,
+        private camera: Camera,
+        public dialogUtil: DialogUtilService
     ) { }
 
     ionViewDidLoad() {
@@ -75,7 +81,37 @@ export class HomePage {
         this.isPressBtn = false;
         return false;
     }
-    openCamera(){
-        
+
+    openCamera() {
+        const options: CameraOptions = {
+            quality: 70,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        }
+
+        console.log(JSON.stringify(options))
+        this.getImage(options);
+    }
+
+    private getImage(options: CameraOptions) {
+        Observable.fromPromise(
+            this.camera.getPicture(options)
+        ).subscribe(
+            imageData => {
+                this.dialogUtil.showLoadingDialog();
+                this.updateGetImage(imageData);
+            }, err => {
+                console.log('search error')
+            }
+        );
+    }
+
+    private updateGetImage(imageData: string) {
+        const base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.imagePath = base64Image;
+        setTimeout(() => {
+            this.dialogUtil.hideLoadingDialog();
+        }, 200)
     }
 }
