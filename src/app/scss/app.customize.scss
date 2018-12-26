@@ -1,3 +1,35 @@
+html {
+    font-size: 12px!important;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+[padding] h1:first-child, 
+[padding] h2:first-child, 
+[padding] h3:first-child, 
+[padding] h4:first-child, 
+[padding] h5:first-child, 
+[padding] h6:first-child {
+    margin-top: 0!important;
+}
+
+input, 
+textarea, 
+keygen, 
+select, 
+button, 
+.list-header-ios, 
+.toolbar-title-ios {
+    letter-spacing: unset!important;
+    font-weight: unset!important;
+}
+
+.list-header-ios {
+    font-size: 18px;
+}
+
 ion-card {
     margin-left: 0!important;
     margin-right: 0!important;
@@ -7,6 +39,7 @@ ion-card {
     width: 100%!important;
 }
 
-.list-header-ios {
-    letter-spacing: unset!important;
+// Swipe
+.swiper-pagination-bullet-active {
+    color: color($colors, primary, base);
 }
