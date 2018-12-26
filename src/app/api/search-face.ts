@@ -15,7 +15,7 @@ export class SearchFace {
 
     private key = 'ty0l5GTF5Dllxt5qtmoXkLxBHtKrckIZ';
     private secret = '-OLAkqud-QrK2fkpyU17YKiK5EfAexxu';
-    private faceSetToken = '33ba61e6cc9c49628f452b3869344a56';
+    private faceSetToken = '2b4e2eddbd0b327a8c314fe6e9f07085';
 
     constructor(private http: HttpClient) { }
 
