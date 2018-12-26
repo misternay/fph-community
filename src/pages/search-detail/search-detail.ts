@@ -6,7 +6,6 @@ import * as firebase from 'Firebase';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { MissingList } from '../missing-list/missing-list-mock-data';
 import { Geolocation } from '@ionic-native/geolocation';
-
 @IonicPage()
 @Component({
     selector: 'page-search-detail',
@@ -80,7 +79,13 @@ export class SearchDetailPage {
         this.geolocation.getCurrentPosition().then(res => {
             this.latitude = res.coords.latitude;
             this.longitude = res.coords.longitude;
-        }).catch(() => {
+            this.dialogUtilService.hideLoadingDialog();
+            this.navCtrl.push('LocationPage', {
+                lat: this.latitude,
+                lng: this.longitude
+            })
+        }).catch((err) => {
+            console.log('err', err)
             this.dialogUtilService.hideLoadingDialog();
         });
     }
@@ -90,7 +95,9 @@ export class SearchDetailPage {
             image: this.userImage,
             missing: this.missingImage,
             detail: this.textAreaValue,
-            name: this.missingData ? this.missingData.name : ""
+            name: this.missingData ? this.missingData.name : "",
+            lat: this.latitude,
+            lng: this.longitude
         });
         localStorage.setItem('post', JSON.stringify(arrayPost));
         this.isShared = true;
