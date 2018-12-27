@@ -41,5 +41,5 @@ ion-card {
 
 // Swipe
 .swiper-pagination-bullet-active {
-    color: color($colors, primary, base);
+    background: color($colors, primary, base);
 }

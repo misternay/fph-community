@@ -55,8 +55,8 @@
     </ion-card>
     <ion-row no-padding (tap)="goToMissingList()">
         <ion-card>
-            <ion-row style="padding-top: 16px;padding-left: 16px">
-                <span>ประกาศคนหาย</span>
+            <ion-row>
+                <ion-col class="bold">ประกาศคนหาย</ion-col>
             </ion-row>
             <ion-row padding *ngIf="isLoadingFinnish">
                 <ion-col col-3 style="border: 2px red" *ngFor="let people of peopleLists">
