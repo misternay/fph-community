@@ -21,7 +21,7 @@ export class LocationPage {
   }
 
   displayMap(lat, lng) {
-    var map = L.map('mapid').setView([lat, lng], 15);
+    var map = L.map('mapid').setView([lat, lng], 21);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
