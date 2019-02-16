@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { firebaseConfig, fhp } from './app.module';
-export var otherApp: any;
+export var otherApp: firebase.app.App;
 @Component({
   templateUrl: 'app.html'
 })

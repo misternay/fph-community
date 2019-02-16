@@ -53,7 +53,7 @@ export class SearchPage {
 
     capture() {
         const options: CameraOptions = {
-            quality: 85,
+            quality: 70,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
@@ -92,6 +92,8 @@ export class SearchPage {
                 console.log(JSON.stringify(err))
                 this.navCtrl.push('SearchDetailPage', {
                     image: this.imagePath
+                }).then(() => {
+                    this.dialogUtil.hideLoadingDialog();
                 });
             }
         );

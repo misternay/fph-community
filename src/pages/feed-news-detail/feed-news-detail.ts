@@ -16,5 +16,10 @@ export class FeedNewsDetailPage {
     this.data = this.navParams.get('dataDetail')
     console.log('datais', this.data)
   }
-
+  openLocation() {
+    this.navCtrl.push('LocationPage', {
+      lat: this.data["lat"],
+      lng: this.data["lng"]
+    })
+  }
 }

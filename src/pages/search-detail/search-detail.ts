@@ -6,6 +6,7 @@ import * as firebase from 'Firebase';
 import { DialogUtilService } from '../../app/util/dialog.util';
 import { MissingList } from '../missing-list/missing-list-mock-data';
 import { Geolocation } from '@ionic-native/geolocation';
+import { otherApp } from '../../app/app.component';
 @IonicPage()
 @Component({
     selector: 'page-search-detail',
@@ -90,16 +91,15 @@ export class SearchDetailPage {
         });
     }
     sharePost() {
-        let arrayPost: Array<any> = JSON.parse(localStorage.getItem('post')) ? JSON.parse(localStorage.getItem('post')) : [];
-        arrayPost.push({
+        let dataDetail = {
             image: this.userImage,
             missing: this.missingImage,
             detail: this.textAreaValue,
             name: this.missingData ? this.missingData.name : "",
-            lat: this.latitude,
-            lng: this.longitude
-        });
-        localStorage.setItem('post', JSON.stringify(arrayPost));
+            lat: this.latitude ? this.latitude: "",
+            lng: this.longitude ? this.longitude: ""
+        }
+        this.savePictureToDb(dataDetail)
         this.isShared = true;
     }
     isLocation(): boolean {
@@ -107,5 +107,11 @@ export class SearchDetailPage {
             return true
         }
         return false
+    }
+    public savePictureToDb(data) {
+        var otherDatabase = otherApp.database().ref("/feednews");
+        otherDatabase.push(data, err => {
+            console.log(err)
+        })
     }
 }
