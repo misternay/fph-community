@@ -26,7 +26,7 @@ export interface FirebaseResponse {
 export class MissingListPage {
 
     datelist = ['today', 'yesterday', 'monthago']
-    monthList = ['ธันวาคม', 'พฤศจิกายน', 'ตุลาคม', 'อื่นๆ']
+    monthList = ['มกราคม', 'ธันวาคม', 'พฤศจิกายน', 'อื่นๆ']
 
     listDateItem = this.getMockMissingList.getMockData();
 

@@ -12,10 +12,22 @@
 
 
 <ion-content padding>
-    <list-photo [catList]="feedList"></list-photo>
+    <div *ngIf="!isFirstComein" style="padding-top: 50%;padding-left: 30%">
+        กรุณารอสักครู่
+    </div>
     <ion-row>
         <ion-col col-8 offset-3>
             <span *ngIf="!feedList" style="padding-top: 50%">ยังไม่มีข่าวสารเร็วๆนี้</span>
         </ion-col>
     </ion-row>
+    <ion-refresher (ionRefresh)="doRefresh($event);">
+        <ion-refresher-content 
+          pullingText="Pull to refresh"
+          pullingIcon="arrow-up"
+          refreshingSpinner="crescent">
+
+    </ion-refresher-content>
+
+     </ion-refresher>
+    <list-photo [catList]="feedList"></list-photo>
 </ion-content>
